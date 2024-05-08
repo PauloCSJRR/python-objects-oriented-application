@@ -23,9 +23,3 @@ class RestaurantConfig:
     def alternate_status(self):
         self._status = not self._status
     
-    
-restaurant_pizza = RestaurantConfig('Supreme Pizza', 'Italian')
-restaurant_pizza.alternate_status()
-restaurant_sushi = RestaurantConfig('Sushi Now', 'Japanese')
-
-RestaurantConfig.list_restaurants()
