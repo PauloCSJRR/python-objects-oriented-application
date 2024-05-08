@@ -2,20 +2,30 @@ class RestaurantConfig:
     restaurants = []
     
     def __init__(self, name, category):
-        self.name = name
-        self.category = category
-        self.status = False
+        self._name = name.title()
+        self.category = category.title()
+        self._status = False
         RestaurantConfig.restaurants.append(self)
 
     def __str__(self):
-        return f'{self.name} | {self.category}'
+        return f'{self._name} | {self.category}'
     
-    def list_restaurants():
-        for restaurant in RestaurantConfig.restaurants:
-            print(f'{restaurant.name} | {restaurant.category} | {restaurant.status}')
+    @classmethod
+    def list_restaurants(cls):
+        print(f'{'Restaurant name'.ljust(15)} | {'Category'.ljust(15)} | {'Status'}')
+        for restaurant in cls.restaurants:
+            print(f'{restaurant._name.ljust(15)} | {restaurant.category.ljust(15)} | {restaurant.status}')
+            
+    @property
+    def status(self):
+        return 'Active' if self._status else 'Inactive'
+    
+    def alternate_status(self):
+        self._status = not self._status
     
     
 restaurant_pizza = RestaurantConfig('Supreme Pizza', 'Italian')
+restaurant_pizza.alternate_status()
 restaurant_sushi = RestaurantConfig('Sushi Now', 'Japanese')
 
 RestaurantConfig.list_restaurants()
