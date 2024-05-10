@@ -1,4 +1,5 @@
 from models.rate import Rate
+from models.menu.menu_item import MenuItem
 
 class RestaurantConfig:
     restaurants = []
@@ -8,6 +9,7 @@ class RestaurantConfig:
         self.category = category.title()
         self._status = False
         self._rate = []
+        self._menu = []
         RestaurantConfig.restaurants.append(self)
 
     def __str__(self):
@@ -40,3 +42,24 @@ class RestaurantConfig:
         rate_qtd = len(self._rate)
         avg = round(rate_sum/rate_qtd, 1)
         return avg
+    
+    def add_to_menu(self, item):
+        if isinstance(item,MenuItem):
+            self._menu.append(item)
+
+    @property
+    def show_menu(self):
+        print(f'Menu of restaurant {self._name}\n')
+        for i,item in enumerate(self._menu, start=1):
+                        
+            if hasattr(item, 'description'):
+                msg = f'{i}. Name: {item._name} | Price: ${item._price} | Description: {item.description}'
+                print(msg)
+                
+            else:
+                msg = f'{i}. Name: {item._name} | Price: ${item._price} | Size: {item.size}'
+                print(msg)
+                
+            
+        
+    

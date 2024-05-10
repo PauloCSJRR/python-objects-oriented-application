@@ -1,16 +1,21 @@
 from models.restaurant import RestaurantConfig
+from models.menu.drink import Drink
+from models.menu.dish import Dish
 
 italian_restaurant = RestaurantConfig('supreme Pizza', 'Italian')
-italian_restaurant.get_rate('Paul', 5)
-italian_restaurant.get_rate('Pedro', 2)
 mexican_restaurant = RestaurantConfig('Mexican Food', 'Mexican')
-mexican_restaurant.alternate_status()
 japanese_restaurant = RestaurantConfig('Sushi Now', 'Japanese')
 
-RestaurantConfig.list_restaurants()
+drink_juice = Drink('Melon Juice', 5.0, 'Big')
+dish_steak = Dish('Steak', 25.0, 'Ribeye Cap Steak')
+
+italian_restaurant.add_to_menu(drink_juice)
+italian_restaurant.add_to_menu(dish_steak)
+
+# RestaurantConfig.list_restaurants()
 
 def main():
-    RestaurantConfig.list_restaurants()
+    italian_restaurant.show_menu
 
-if __name__ == 'main':
+if __name__ == '__main__':
     main()
