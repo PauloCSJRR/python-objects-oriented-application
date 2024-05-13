@@ -7,7 +7,9 @@ mexican_restaurant = RestaurantConfig('Mexican Food', 'Mexican')
 japanese_restaurant = RestaurantConfig('Sushi Now', 'Japanese')
 
 drink_juice = Drink('Melon Juice', 5.0, 'Big')
+drink_juice.apply_discount()
 dish_steak = Dish('Steak', 25.0, 'Ribeye Cap Steak')
+dish_steak.apply_discount()
 
 italian_restaurant.add_to_menu(drink_juice)
 italian_restaurant.add_to_menu(dish_steak)
